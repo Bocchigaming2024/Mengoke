@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Yasser Ismail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f1b2d;
+      --bg-soft: #1b2e4b;
+      --gold: #e7b94c;
+      --sunflower: #f4c95d;
+      --cream: #f5e6c8;
+      --blue: #4b6fa8;
+      --deep-blue: #243b63;
+      --text: #f8f1df;
+      --muted: #c9b88f;
+      --border: rgba(255,255,255,0.12);
+      --shadow: rgba(0,0,0,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #294777 0%, var(--bg) 60%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px, 80px 80px;
+      background-position: 0 0, 20px 20px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 27, 45, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: var(--sunflower);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      background: rgba(244, 201, 93, 0.12);
+      color: var(--sunflower);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+      min-height: 90vh;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1;
+      color: var(--sunflower);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--cream);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      max-width: 650px;
+    }
+
+    .highlight {
+      color: var(--sunflower);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(244,201,93,0.4), transparent 70%);
+      top: -80px;
+      right: -80px;
+    }
+
+    .info-item {
+      margin-bottom: 22px;
+    }
+
+    .info-item h3 {
+      color: var(--sunflower);
+      margin-bottom: 6px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .info-item p {
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: var(--sunflower);
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: transform 0.35s ease, border-color 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(244,201,93,0.08), transparent 50%);
+      opacity: 0;
+      transition: 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(244,201,93,0.45);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      color: var(--sunflower);
+      margin-bottom: 14px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+    }
+
+    .card p {
+      color: var(--cream);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-box {
+      background: rgba(255,255,255,0.04);
+      border-left: 4px solid var(--gold);
+      padding: 30px;
+      border-radius: 0 20px 20px 0;
+      margin-bottom: 28px;
+    }
+
+    .quote-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--sunflower);
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    .quote-box p {
+      color: var(--cream);
+      line-height: 1.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.15);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--sunflower);
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      background: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 3.4rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Muhammad Yasser Ismail</div>
+      <div class="nav-links">
+        <a href="#about">Tentang</a>
+        <a href="#books">Buku</a>
+        <a href="#thoughts">Pemikiran</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="about">
+    <div>
+      <h1>Personal Branding<br>Through Ideas & Literature</h1>
+      <p>
+        Halo, saya <span class="highlight">Muhammad Yasser Ismail</span>, siswa dari
+        <span class="highlight">SMKN 13 Bandung</span> yang memiliki ketertarikan besar
+        terhadap dunia literatur, filsafat, dan pemikiran modern.
+        Website ini menjadi ruang personal untuk membagikan buku, ide, dan perspektif
+        yang membentuk cara saya melihat dunia.
+      </p>
+
+      <a class="button" href="#books">Jelajahi Dunia Bacaan</a>
+    </div>
+
+    <div class="hero-card">
+      <div class="info-item">
+        <h3>Nama</h3>
+        <p>Muhammad Yasser Ismail</p>
+      </div>
+
+      <div class="info-item">
+        <h3>Pendidikan</h3>
+        <p>SMKN 13 Bandung</p>
+      </div>
+
+      <div class="info-item">
+        <h3>Hobi</h3>
+        <p>Membaca buku sastra, filsafat, dan pemikiran kritis.</p>
+      </div>
+
+      <div class="info-item" id="contact">
+        <h3>Kontak</h3>
+        <p>081223503206</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="books">
+    <h2 class="section-title">Books & Stories</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>No Longer Human</h3>
+        <p>
+          Karya Osamu Dazai ini menceritakan kehidupan Oba Yozo,
+          seseorang yang merasa gagal memahami kehidupan manusia.
+          Novel ini mengeksplorasi rasa keterasingan, depresi, dan
+          pencarian identitas di tengah tekanan sosial.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Homage to Catalonia</h3>
+        <p>
+          Ditulis oleh George Orwell, buku ini merupakan catatan langsung
+          pengalamannya dalam Perang Saudara Spanyol. Buku ini membahas
+          perjuangan politik, propaganda, serta konflik ideologi yang
+          membentuk sejarah modern.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Yofukashi no Uta</h3>
+        <p>
+          Sebuah kisah tentang malam, kebebasan, dan pencarian jati diri.
+          Cerita ini mengikuti Kou Yamori yang menemukan dunia baru ketika
+          bertemu vampir bernama Nazuna. Nuansa malam menjadi simbol pelarian
+          dari rutinitas dan tekanan kehidupan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="thoughts">
+    <h2 class="section-title">Ideas & Thinkers</h2>
+
+    <div class="quote-box">
+      <h3>Albert Camus</h3>
+      <p>
+        Camus dikenal melalui konsep absurdisme, yaitu gagasan bahwa manusia
+        terus mencari makna di dunia yang sebenarnya tidak memberikan jawaban pasti.
+        Meski demikian, manusia tetap harus hidup dan menciptakan maknanya sendiri.
+      </p>
+    </div>
+
+    <div class="quote-box">
+      <h3>Jean-Paul Sartre</h3>
+      <p>
+        Sartre menekankan eksistensialisme: manusia bebas menentukan dirinya sendiri.
+        Kebebasan tersebut datang bersama tanggung jawab besar terhadap pilihan hidup.
+      </p>
+    </div>
+
+    <div class="quote-box">
+      <h3>Jean Baudrillard</h3>
+      <p>
+        Baudrillard terkenal dengan teori simulacra dan hiperrealitas.
+        Ia menjelaskan bagaimana media modern menciptakan realitas buatan yang
+        sering kali terasa lebih nyata daripada kenyataan itu sendiri.
+      </p>
+    </div>
+
+    <div class="quote-box">
+      <h3>Michel Foucault</h3>
+      <p>
+        Foucault membahas hubungan antara kekuasaan, pengetahuan,
+        dan kontrol sosial. Menurutnya, institusi seperti sekolah,
+        rumah sakit, dan penjara membentuk cara manusia berpikir dan bertindak.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Designed with inspiration from artistic web aesthetics & Van Gogh sunflower palette.<br>
+      © 2026 Muhammad Yasser Ismail
+    </p>
+  </footer>
+
+</body>
+</html>
