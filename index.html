@@ -407,18 +407,85 @@
       <h3>Michel Foucault</h3>
       <p>
         Foucault membahas hubungan antara kekuasaan, pengetahuan,
-        Dan kontrol sosial. Menurutnya, institusi seperti sekolah,
-        Rumah sakit dan penjara membentuk cara manusia berpikir dan bertindak.
+        dan kontrol sosial. Menurutnya, institusi seperti sekolah,
+        rumah sakit, dan penjara membentuk cara manusia berpikir dan bertindak.
       </p>
+    </div>
+  </section>
+
+    <section id="guestbook">
+    <h2 class="section-title">Leave a Message</h2>
+
+    <div class="hero-card" style="max-width: 800px; margin:auto;">
+      <form id="messageForm">
+        <div class="info-item">
+          <h3>Nama</h3>
+          <input type="text" id="name" required placeholder="Masukkan nama..." style="width:100%; padding:14px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,0.06); color:var(--text); outline:none;">
+        </div>
+
+        <div class="info-item">
+          <h3>Pesan</h3>
+          <textarea id="message" required placeholder="Tinggalkan pesan untuk website ini..." rows="5" style="width:100%; padding:14px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,0.06); color:var(--text); outline:none; resize:none;"></textarea>
+        </div>
+
+        <button type="submit" class="button" style="border:none; cursor:pointer;">
+          Kirim Pesan
+        </button>
+      </form>
+
+      <div id="messages" style="margin-top:40px;"></div>
     </div>
   </section>
 
   <footer>
     <p>
-      Designed with inspiration from artistic web aesthetics.<br>
+      Designed with inspiration from artistic web aesthetics & Van Gogh sunflower palette.<br>
       © 2026 Muhammad Yasser Ismail
     </p>
   </footer>
 
+  <script>
+    const form = document.getElementById('messageForm');
+    const messagesContainer = document.getElementById('messages');
+
+    function loadMessages() {
+      const messages = JSON.parse(localStorage.getItem('guestMessages')) || [];
+      messagesContainer.innerHTML = '';
+
+      messages.reverse().forEach(msg => {
+        const div = document.createElement('div');
+        div.style.background = 'rgba(255,255,255,0.05)';
+        div.style.border = '1px solid rgba(255,255,255,0.08)';
+        div.style.padding = '18px';
+        div.style.borderRadius = '18px';
+        div.style.marginBottom = '18px';
+
+        div.innerHTML = `
+          <h3 style="color: var(--sunflower); margin-bottom:8px;">${msg.name}</h3>
+          <p style="line-height:1.8; color: var(--cream);">${msg.message}</p>
+        `;
+
+        messagesContainer.appendChild(div);
+      });
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+
+      const messages = JSON.parse(localStorage.getItem('guestMessages')) || [];
+
+      messages.push({ name, message });
+
+      localStorage.setItem('guestMessages', JSON.stringify(messages));
+
+      form.reset();
+      loadMessages();
+    });
+
+    loadMessages();
+  </script>
 </body>
 </html>
