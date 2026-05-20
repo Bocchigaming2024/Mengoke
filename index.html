@@ -31,12 +31,7 @@
     }
 
     body {
-      background:
-        linear-gradient(rgba(15,27,45,0.72), rgba(15,27,45,0.82)),
-        url('https://uploads5.wikiart.org/images/vincent-van-gogh/wheatfield-with-crows-1890.jpg!Large.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background: radial-gradient(circle at top, #294777 0%, var(--bg) 60%);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
@@ -299,7 +294,6 @@
       <div class="logo">Muhammad Yasser Ismail</div>
       <div class="nav-links">
         <a href="#about">Tentang</a>
-	<a href="#tjkn">Jurusan</a>
         <a href="#books">Buku</a>
         <a href="#thoughts">Pemikiran</a>
         <a href="#contact">Kontak</a>
@@ -344,27 +338,6 @@
     </div>
   </section>
 
-  <section id="tjkn">
-    <h2 class="section-title">Tentang Jurusan TJKN</h2>
-
-    <div class="hero-card">
-      <p style="line-height: 2; color: var(--cream); font-size: 1.05rem;">
-        <span class="highlight">Teknik Jaringan Komputer dan Telekomunikasi (TJKN)</span>
-        merupakan jurusan yang mempelajari bagaimana sistem komputer,
-        Jaringan internet, server, dan komunikasi digital bekerja.
-        Di jurusan ini, siswa mempelajari instalasi jaringan,
-        konfigurasi router dan switch, administrasi server,
-        Keamanan jaringan, hingga teknologi telekomunikasi modern.
-        <br><br>
-        TJKN juga melatih kemampuan problem solving, logika teknis,
-        Dan troubleshooting yang sangat dibutuhkan di era digital.
-        Dengan berkembangnya teknologi cloud, internet, dan infrastruktur digital,
-        jurusan ini memiliki peluang karier luas di bidang IT,
-        networking, cybersecurity, and system administration.
-      </p>
-    </div>
-  </section>
-
   <section id="books">
     <h2 class="section-title">Books & Stories</h2>
 
@@ -373,24 +346,29 @@
         <h3>No Longer Human</h3>
         <p>
           Karya Osamu Dazai ini menceritakan kehidupan Oba Yozo,
-          Seseorang yang merasa gagal memahami kehidupan manusia.
+          seseorang yang merasa gagal memahami kehidupan manusia.
           Novel ini mengeksplorasi rasa keterasingan, depresi, dan
-          Pencarian identitas di tengah tekanan sosial.
+          pencarian identitas di tengah tekanan sosial.
         </p>
       </div>
 
       <div class="card">
-        <h3>My youth romantic comedy</h3>
+        <h3>Homage to Catalonia</h3>
         <p>
-          Menceritakan tentang Hachiman Hikigaya, seorang siswa SMA penyendiri, sinis, 	  dan antisosial. Karena pandangannya yang pesimis tentang masa muda, ia 	  dipaksa bergabung dengan Klub Relawan sekolah. Di sana, ia bersama 
-	  Teman-temannya memecahkan berbagai masalah sosial yang rumit antarsiswa.
+          Ditulis oleh George Orwell, buku ini merupakan catatan langsung
+          pengalamannya dalam Perang Saudara Spanyol. Buku ini membahas
+          perjuangan politik, propaganda, serta konflik ideologi yang
+          membentuk sejarah modern.
         </p>
       </div>
 
       <div class="card">
-        <h3>The Stranger</h3>
+        <h3>Yofukashi no Uta</h3>
         <p>
-          Mengikuti kisah Meursault, seorang pria Prancis yang dingin dan acuh tak 	  acuh secara emosional yang tinggal di Aljazair. Setelah pemakaman ibunya, ia 	  terlibat dalam konflik lokal dan tanpa alasan membunuh seorang pria Arab di 	  pantai.
+          Sebuah kisah tentang malam, kebebasan, dan pencarian jati diri.
+          Cerita ini mengikuti Kou Yamori yang menemukan dunia baru ketika
+          bertemu vampir bernama Nazuna. Nuansa malam menjadi simbol pelarian
+          dari rutinitas dan tekanan kehidupan.
         </p>
       </div>
     </div>
@@ -435,6 +413,20 @@
     </div>
   </section>
 
+<section id="music">
+    <h2 class="section-title">Entahlah</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Saya Sendiri Playlist</h3>
+        <p>
+          Kumpulan lagu... dah gitu aja
+        </p>
+
+       <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1lP6w7tV7nYq1D9g1vi1in?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>"
+      </div>
+
+
     <section id="guestbook">
     <h2 class="section-title">Leave a Message</h2>
 
@@ -461,7 +453,7 @@
 
   <footer>
     <p>
-      Designed with inspiration from artistic web aesthetics.<br>
+      Designed with inspiration from artistic web aesthetics & Van Gogh sunflower palette.<br>
       © 2026 Muhammad Yasser Ismail
     </p>
   </footer>
@@ -474,7 +466,7 @@
       const messages = JSON.parse(localStorage.getItem('guestMessages')) || [];
       messagesContainer.innerHTML = '';
 
-      messages.reverse().forEach((msg, index) => {
+      messages.reverse().forEach(msg => {
         const div = document.createElement('div');
         div.style.background = 'rgba(255,255,255,0.05)';
         div.style.border = '1px solid rgba(255,255,255,0.08)';
@@ -483,29 +475,11 @@
         div.style.marginBottom = '18px';
 
         div.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; margin-bottom:12px; flex-wrap:wrap;">
-            <h3 style="color: var(--sunflower);">${msg.name}</h3>
-            <button class="delete-btn" data-index="${messages.length - 1 - index}" style="background:rgba(255,80,80,0.15); color:#ff9f9f; border:1px solid rgba(255,80,80,0.25); padding:8px 14px; border-radius:12px; cursor:pointer; transition:0.3s ease;">
-              Hapus
-            </button>
-          </div>
-
+          <h3 style="color: var(--sunflower); margin-bottom:8px;">${msg.name}</h3>
           <p style="line-height:1.8; color: var(--cream);">${msg.message}</p>
         `;
 
         messagesContainer.appendChild(div);
-      });
-
-      document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function() {
-          const index = this.getAttribute('data-index');
-          const messages = JSON.parse(localStorage.getItem('guestMessages')) || [];
-
-          messages.splice(index, 1);
-
-          localStorage.setItem('guestMessages', JSON.stringify(messages));
-          loadMessages();
-        });
       });
     }
 
