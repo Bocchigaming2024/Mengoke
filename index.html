@@ -298,15 +298,16 @@
     <nav>
       <div class="logo">Muhammad Yasser Ismail</div>
       <div class="nav-links">
-        <a href="#about">Tentang</a>
-	<a href="#tjkn">Jurusan</a>
-        <a href="#books">Buku</a>
-        <a href="#thoughts">Pemikiran</a>
-        <a href="#contact">Kontak</a>
+        <a href="#profile" onclick="showPage('profile')">Profil</a>
+        <a href="#jurusan" onclick="showPage('jurusan')">Jurusan</a>
+        <a href="#books" onclick="showPage('books')">Buku</a>
+        <a href="#thoughts" onclick="showPage('thoughts')">Pemikiran</a>
+        <a href="#guestbook" onclick="showPage('guestbook')">Pesan</a>
       </div>
     </nav>
   </header>
 
+  <main id="page-profile" class="page-content">
   <section class="hero" id="about">
     <div>
       <h1>Personal Branding<br>Through Ideas & Literature</h1>
@@ -333,6 +334,13 @@
       </div>
 
       <div class="info-item">
+        <h3>Jurusan</h3>
+        <p>
+          Teknik Jaringan Komputer dan Telekomunikasi (TJKN)
+        </p>
+      </div>
+
+      <div class="info-item">
         <h3>Hobi</h3>
         <p>Membaca buku sastra, filsafat, dan pemikiran kritis.</p>
       </div>
@@ -343,29 +351,33 @@
       </div>
     </div>
   </section>
+</main>
 
-  <section id="tjkn">
+<main id="page-jurusan" class="page-content" style="display:none;">
+<section id="tjkn">
     <h2 class="section-title">Tentang Jurusan TJKN</h2>
 
     <div class="hero-card">
       <p style="line-height: 2; color: var(--cream); font-size: 1.05rem;">
         <span class="highlight">Teknik Jaringan Komputer dan Telekomunikasi (TJKN)</span>
         merupakan jurusan yang mempelajari bagaimana sistem komputer,
-        Jaringan internet, server, dan komunikasi digital bekerja.
+        jaringan internet, server, dan komunikasi digital bekerja.
         Di jurusan ini, siswa mempelajari instalasi jaringan,
         konfigurasi router dan switch, administrasi server,
-        Keamanan jaringan, hingga teknologi telekomunikasi modern.
+        keamanan jaringan, hingga teknologi telekomunikasi modern.
         <br><br>
         TJKN juga melatih kemampuan problem solving, logika teknis,
-        Dan troubleshooting yang sangat dibutuhkan di era digital.
+        dan troubleshooting yang sangat dibutuhkan di era digital.
         Dengan berkembangnya teknologi cloud, internet, dan infrastruktur digital,
         jurusan ini memiliki peluang karier luas di bidang IT,
-        networking, cybersecurity, and system administration.
+        networking, cybersecurity, dan system administration.
       </p>
     </div>
   </section>
+</main>
 
-  <section id="books">
+<main id="page-books" class="page-content" style="display:none;">
+<section id="books">
     <h2 class="section-title">Books & Stories</h2>
 
     <div class="grid">
@@ -373,9 +385,9 @@
         <h3>No Longer Human</h3>
         <p>
           Karya Osamu Dazai ini menceritakan kehidupan Oba Yozo,
-          Seseorang yang merasa gagal memahami kehidupan manusia.
+          seseorang yang merasa gagal memahami kehidupan manusia.
           Novel ini mengeksplorasi rasa keterasingan, depresi, dan
-          Pencarian identitas di tengah tekanan sosial.
+          pencarian identitas di tengah tekanan sosial.
         </p>
       </div>
 
@@ -384,6 +396,7 @@
         <p>
           Menceritakan tentang Hachiman Hikigaya, seorang siswa SMA penyendiri, sinis, 	  dan antisosial. Karena pandangannya yang pesimis tentang masa muda, ia 	  dipaksa bergabung dengan Klub Relawan sekolah. Di sana, ia bersama 
 	  Teman-temannya memecahkan berbagai masalah sosial yang rumit antarsiswa.
+
         </p>
       </div>
 
@@ -395,8 +408,10 @@
       </div>
     </div>
   </section>
+</main>
 
-  <section id="thoughts">
+<main id="page-thoughts" class="page-content" style="display:none;">
+<section id="thoughts">
     <h2 class="section-title">Ideas & Thinkers</h2>
 
     <div class="quote-box">
@@ -434,10 +449,12 @@
       </p>
     </div>
   </section>
+</main>
 
 
 
-    <section id="guestbook">
+<main id="page-guestbook" class="page-content" style="display:none;">
+<section id="guestbook">
     <h2 class="section-title">Leave a Message</h2>
 
     <div class="hero-card" style="max-width: 800px; margin:auto;">
@@ -460,10 +477,11 @@
       <div id="messages" style="margin-top:40px;"></div>
     </div>
   </section>
+</main>
 
-  <footer>
+<footer>
     <p>
-      Designed with inspiration from artistic web aesthetics.<br>
+      Designed with inspiration from artistic web aesthetics<br>
       © 2026 Muhammad Yasser Ismail
     </p>
   </footer>
@@ -509,6 +527,19 @@
           loadMessages();
         });
       });
+    }
+
+    function showPage(page) {
+      document.querySelectorAll('.page-content').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      const selectedPage = document.getElementById(`page-${page}`);
+
+      if (selectedPage) {
+        selectedPage.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     form.addEventListener('submit', function(e) {
